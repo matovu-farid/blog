@@ -1,24 +1,42 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# blog
 
-Things you may want to cover:
 
-* Ruby version
+## Description
 
-* System dependencies
+The blog is created with ruby on rails and allows users to add posts
 
-* Configuration
 
-* Database creation
+![screenshot](./screenshot.PNG)
 
-* Database initialization
+## Built With
 
-* How to run the test suite
+- Ruby
+- Ruby on Rails
 
-* Services (job queues, cache servers, search engines, etc.)
+## Deployment
+[The site is deployed](https://frosty-beaver-391916.netlify.app)
 
-* Deployment instructions
+## Getting Started
 
-* ...
+To get the content of this project locally you need to run this command in your terminal:
+``` bash
+git clone your https://github.com/matovu-farid/blog.git
+cd project blog
+bundle install
+rails s
+```
+
+## Authors
+
+👤 **Matovu Farid Nkoba**
+
+- GitHub: [@matovu-farid](https://github.com/matovu-farid)
+- Twitter: [@matovu100](https://twitter.com/matovu100)
+- LinkedIn: [matovu-farid](https://www.linkedin.com/in/matovu-farid-48b80257)
+
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
