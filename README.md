@@ -23,9 +23,14 @@ The blog is created with ruby on rails and allows users to add posts
 To get the content of this project locally you need to run this command in your terminal:
 ``` bash
 git clone your https://github.com/matovu-farid/blog.git
-cd project blog
+cd blog
 bundle install
 rails s
+```
+## Tests
+To run the tests, navigate to the root directory of this app and run
+```ruby
+rspec spec
 ```
 
 ## Authors
