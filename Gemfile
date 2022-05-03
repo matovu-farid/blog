@@ -18,6 +18,9 @@ gem 'rails-controller-testing'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
+gem 'rails_12factor'
+gem 'foreman'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
