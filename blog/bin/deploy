@@ -1,0 +1,4 @@
+#! /bin/sh
+
+jekyll build
+rsync -va _site/ ../little-feedback/public/blog
