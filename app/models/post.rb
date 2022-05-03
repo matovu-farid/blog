@@ -2,13 +2,11 @@ class Post < ApplicationRecord
   belongs_to :author, class_name: 'User'
   has_many :likes
   has_many :comments
-  def update_posts_count(value)
-    user = User.where('id = ?', author_id).first
-    user.posts_counter = value
-    user.save
+  def update_posts_count
+    author.increment!(:posts_counter)
   end
 
   def recent_comments
-    Comment.where('post_id = ?', id).last(5)
+    comments.order('created_at Desc').limit(5)
   end
 end
