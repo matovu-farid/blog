@@ -8,7 +8,7 @@
 The blog is created with ruby on rails and allows users to add posts
 
 
-![screenshot](./screenshot.PNG)
+![screenshot](./screenshot.png)
 
 ## Built With
 
