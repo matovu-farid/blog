@@ -1,3 +1,13 @@
-<div class="container">
-    <%=render 'shared/user',user:@user%>
-</div>
+<section class="container">
+        <header>
+            <%=render 'shared/user',user:@user%>
+        </header>
+        <div>
+                <%@posts.each do |post|%>
+                    <div class="my-5">
+                        <%=render 'shared/post',post:post%>
+                        <%=render 'shared/comments',comments:post.comments%>
+                    </div>
+                <%end%>
+        </div>
+</section>
