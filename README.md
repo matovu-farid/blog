@@ -8,7 +8,7 @@
 The blog is created with ruby on rails and allows users to add posts
 
 
-![screenshot](./screenshot.PNG)
+![screenshot](./screenshot.png)
 
 ## Built With
 
@@ -16,7 +16,7 @@ The blog is created with ruby on rails and allows users to add posts
 - Ruby on Rails
 
 ## Deployment
-[The site is deployed](https://frosty-beaver-391916.netlify.app)
+[The site is deployed](https://blog3-2022.herokuapp.com/)
 
 ## Getting Started
 
