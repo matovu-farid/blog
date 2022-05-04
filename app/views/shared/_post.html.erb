@@ -6,9 +6,6 @@
             </p>
         </div>
         <div class="align-self-end p-2">
-            <p>
-                Comments: <%=post.comments_counter%>
-                Likes: <%=post.likes_counter%>
-            </p>
+            <%=render 'shared/post_counters',post:post%>
         </div>
     </div>
