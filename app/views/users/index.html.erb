@@ -1,5 +1,7 @@
 <ul class="list-group">
   <%@users.each do |user|%>
+  <li class="list-group-item my-5">
       <%=render 'shared/user', user: user%>
+  </li>
   <% end %>
 </ul>
