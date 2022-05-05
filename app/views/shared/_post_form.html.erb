@@ -1,4 +1,4 @@
-<%=form_with url:user_posts_path, scope: :post,local: true,class:'container w-50' do |f|%>
+<%=form_with url:user_posts_path(user_id:post.author_id,id:post.id), scope: :post,local: true,class:'container w-50' do |f|%>
 		<%=f.label :title,class:'form-label'%><br/>
 		<%=f.text_field :title,class:'form-control'%> <br/>
 

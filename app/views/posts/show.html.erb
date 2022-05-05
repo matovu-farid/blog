@@ -1,4 +1,5 @@
 <section class="container">
     <%=render 'shared/post_show',post:@post%>
     <%=render 'shared/comments',comments:@comments%>
+    <%=link_to 'Edit post', edit_user_post_path(@post),class:'btn btn-secondary align-self-start'%>
 </section>
