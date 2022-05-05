@@ -41,6 +41,16 @@ rspec spec
 - Twitter: [@matovu100](https://twitter.com/matovu100)
 - LinkedIn: [matovu-farid](https://www.linkedin.com/in/matovu-farid-48b80257)
 
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to Microverse
+
+
+
 
 ## 📝 License
 

@@ -1,1 +1,4 @@
-<h1>Here is a single post</h1>
+<section class="container">
+    <%=render 'shared/post_show',post:@post%>
+    <%=render 'shared/comments',comments:@comments%>
+</section>

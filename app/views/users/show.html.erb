@@ -1,1 +1,27 @@
-<h1>Here is a single user</h1>
+<section class="container">
+    <header>           
+        <%=render 'shared/user', user:@user %>            
+    </header>      
+    <section class="card text-dark bg-light">
+        <div class="card-header">Bio</div>
+        <div class="card-body">
+            <p class="card-text">
+                <%=@user.bio%>
+            </p>
+        </div>
+    </section>
+    <ul class='list-group '>
+        <%@user.last_three_posts.each do |post|%>
+        
+            <li class="list-group-item px-0">
+                <%=link_to user_post_path(id:post.id,user_id:@user.id) ,class:'list-group-item list-group-item-action p-0 m-0' do%>
+
+                    <%=render 'shared/post', post:post%>
+                <%end%>
+            </li>
+        <%end%>
+    </ul>
+    <%=link_to user_posts_path(user_id:@user.id) ,class:'list-group-item-action p-0 m-0 d-flex justify-content-center' do%>
+        <button class="btn btn-success ">See all Posts</button>
+    <%end%> 
+</section>

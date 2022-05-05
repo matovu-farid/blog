@@ -1,1 +1,11 @@
-<h1>Here is a list of users</h1>
+<ul class="list-group">
+	<%@users.each do |user|%>
+		<div>
+			<%=link_to user_path(id:user.id) ,class:'list-group-item list-group-item-action p-0 m-0' do%>
+				<li class="my-5">
+					<%=render 'shared/user', user: user%>
+				</li>
+			<%end%>
+		</div>
+	<% end %>
+</ul>
