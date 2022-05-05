@@ -17,7 +17,9 @@
         </li>
       <%end%>
     </ul>
-    <%=render 'shared/center_btn',text:"See all Posts"%>
+    <%=link_to user_posts_path(user_id:@user.id) ,class:'list-group-item-action p-0 m-0 d-flex justify-content-center' do%>
+            <button class="btn btn-success ">See all Posts</button>
+    <%end%>
 
     
 

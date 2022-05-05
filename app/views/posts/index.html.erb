@@ -4,9 +4,14 @@
         </header>
         <div>
                 <%@posts.each do |post|%>
-                    <div class="my-5">
-                        <%=render 'shared/post',post:post%>
-                        <%=render 'shared/comments',comments:post.comments%>
+                    <div class="my-5">    
+                            <%=render 'shared/post',post:post%>
+                            <%=render 'shared/comments',comments:post.recent_comments%>
+                      
+                        <%=link_to user_post_path(id:post.id) ,{:class=>'list-group-item-action p-0 m-0'} do%>
+                            <button class="btn btn-success ">See Post</button>
+                        <%end%>
+
                     </div>
                 <%end%>
         </div>

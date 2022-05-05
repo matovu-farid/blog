@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @posts = current_user.last_three_posts
+    #@link = post_path
   end
 
   def show
