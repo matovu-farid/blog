@@ -1,5 +1,10 @@
 <ul class="list-group">
     <%comments.each do |comment|%>
-        <li class="list-group-item"><%=comment.author.name%>: <%=comment.text%></li>       
+        <li class="list-group-item justify-content-between d-flex">
+    
+            <%=comment.author.name%>: <%=comment.text%>
+            <%= link_to "Edit ", 
+             edit_user_post_comment_path(post_id:comment.post_id,id:comment.id),class: 'btn btn-secondary' %>
+        </li>       
     <%end%>
 </div>

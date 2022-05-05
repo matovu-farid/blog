@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
   end
   def new
-     
+   @post = Post.new
   end
   def edit
     @post = find_post
@@ -37,7 +37,6 @@ class PostsController < ApplicationController
       flash[:success]='Your post was created Successfully'
       redirect_to user_post_url(@post)
     else
-      flash.now[:alert] = 'Invalid Input'
       render :edit
     end
   end

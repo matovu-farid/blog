@@ -1,7 +1,7 @@
 <div class="contaner">
 	
 	<h2 class="h1 text-center">Create a new post</h2>
-	<%=form_with url:user_posts_path, scope: :post,local: true,class:'container w-50' do |f|%>
+	<%=form_with url:user_posts_path,model:@post,local: true,class:'container w-50' do |f|%>
 	    <%=render 'shared/post_form',post:@post,form:f%>
 	<%end%>
 
