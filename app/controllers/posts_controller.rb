@@ -8,7 +8,50 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find params[:id]
+    @post = find_post
     @comments = @post.comments
+  end
+
+  def new
+    @post = Post.new
+  end
+
+  def edit
+    @post = find_post
+  end
+
+  def create
+    @post = create_new_post
+    @post.author_id = params[:user_id]
+    if @post.save
+      flash[:success] = 'Your post was created Successfully'
+      redirect_to user_post_url(id: @post.id)
+    else
+      render :new
+    end
+  end
+
+  def update
+    new_post = create_new_post
+    @post = find_post
+    @post.title = new_post.title
+    @post.text = new_post.text
+
+    if @post.save
+      flash[:success] = 'Your post was created Successfully'
+      redirect_to user_post_url(@post)
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def create_new_post
+    Post.new(params.require(:post).permit(:title, :text))
+  end
+
+  def find_post
+    Post.find params[:id]
   end
 end

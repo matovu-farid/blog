@@ -1,0 +1,6 @@
+<section>
+  <h2>Edit your comment</h2>
+  <%=form_with url:user_post_comment_path(),model:@comment,local: true,class:'container w-50' do |f|%>
+        <%=render 'shared/comment_form',form:f%>
+  <%end%>
+</div>

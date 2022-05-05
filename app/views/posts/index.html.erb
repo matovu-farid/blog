@@ -4,6 +4,7 @@
                 <%=render 'shared/user',user:@user%>
             </header>
         <%end%>
+        <%=link_to 'New post',new_user_post_path(user_id:@user.id),class:'btn btn-secondary'%>
         <div>
                 <%@posts.each do |post|%>
                     <div class="my-5">    
