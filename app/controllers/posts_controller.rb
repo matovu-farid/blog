@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = find_post
   end
   def create
-    @post = new_post
+    @post = create_new_post
     @post.author_id = params[:user_id]
     if @post.save
       flash[:success]='Your post was created Successfully'
@@ -28,22 +28,21 @@ class PostsController < ApplicationController
     end
   end
   def update
-    new_post = :new_post
-    saved_post = find_post
-    saved_post.title = new_post.title
-    save_post.text = new_post.text
+    new_post = create_new_post
+    @post = find_post
+    @post.title = new_post.title
+    @post.text = new_post.text
 
-    if save_post.save
+    if @post.save
       flash[:success]='Your post was created Successfully'
-      redirect_to user_post_url(id:@post.id)
+      redirect_to user_post_url(@post)
     else
-      @post = saved_post
       flash.now[:alert] = 'Invalid Input'
       render :edit
     end
   end
   private
-  def new_post
+  def create_new_post
     Post.new(params.require(:post).permit(:title,:text))
   end
   def find_post
