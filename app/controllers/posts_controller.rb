@@ -24,10 +24,11 @@ class PostsController < ApplicationController
     @post = create_new_post
     @post.author_id = params[:user_id]
     if @post.save
-      flash[:success] = 'Your post was created Successfully'
+      success
       redirect_to user_post_url(id: @post.id)
     else
-      render :new
+      show_errors
+      render :new,status: 500
     end
   end
 
@@ -38,14 +39,30 @@ class PostsController < ApplicationController
     @post.text = new_post.text
 
     if @post.save
-      flash[:success] = 'Your post was created Successfully'
+      success
       redirect_to user_post_url(@post)
     else
+      show_errors
       render :edit
     end
   end
 
   private
+  def success
+    flash[:notice] = 'Your post was created Successfully'
+  end
+  def failed
+    flash.now[:alert] = 'You post was not saved'
+  end
+
+  def show_errors
+    failed
+      errors = @post.errors.map do |error| 
+        error.full_message 
+      end
+      flash.now[:error] = errors.join(" | ")
+      
+  end
 
   def create_new_post
     Post.new(params.require(:post).permit(:title, :text))
