@@ -1,7 +1,7 @@
 <section class="container">
-    <header>
-        <%=render 'shared/user', user:@user %>
-    </header>
+    <header>           
+        <%=render 'shared/user', user:@user %>            
+    </header>      
     <section class="card text-dark bg-light">
         <div class="card-header">Bio</div>
         <div class="card-body">
@@ -11,16 +11,17 @@
         </div>
     </section>
     <ul class='list-group '>
-    <%@user.last_three_posts.each do |post|%>
-        <li class="list-group-item px-0">
-            <%=render 'shared/post', post:post%>
-        </li>
-      <%end%>
+        <%@user.last_three_posts.each do |post|%>
+        
+            <li class="list-group-item px-0">
+                <%=link_to user_post_path(id:post.id,user_id:@user.id) ,class:'list-group-item list-group-item-action p-0 m-0' do%>
+
+                    <%=render 'shared/post', post:post%>
+                <%end%>
+            </li>
+        <%end%>
     </ul>
     <%=link_to user_posts_path(user_id:@user.id) ,class:'list-group-item-action p-0 m-0 d-flex justify-content-center' do%>
-            <button class="btn btn-success ">See all Posts</button>
-    <%end%>
-
-    
-
+        <button class="btn btn-success ">See all Posts</button>
+    <%end%> 
 </section>

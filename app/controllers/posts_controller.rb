@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
+  POSTS_PER_PAGE = 3
+
   def index
-    @user = current_user
-    @posts = current_user.last_three_posts
-    #@link = post_path
+    @user = User.find(params[:user_id])
+    @page = params.fetch(:page,0).to_i
+    @posts = @user.posts.offset(@page*POSTS_PER_PAGE).limit(POSTS_PER_PAGE)
   end
 
   def show
     @post = Post.find params[:id]
-    @comments = @post.recent_comments
+    @comments = @post.comments
   end
 end

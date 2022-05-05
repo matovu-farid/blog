@@ -1,19 +1,32 @@
 <section class="container">
-        <header>
-            <%=render 'shared/user',user:@user%>
-        </header>
+        <%=link_to user_path(id:@user.id) ,class:'list-group-item list-group-item-action ' do%>
+            <header>
+                <%=render 'shared/user',user:@user%>
+            </header>
+        <%end%>
         <div>
                 <%@posts.each do |post|%>
                     <div class="my-5">    
+                            
+                        <%=link_to user_post_path(id:post.id) ,{:class=>'list-group-item list-group-item-action p-0 m-0'} do%>
                             <%=render 'shared/post',post:post%>
                             <%=render 'shared/comments',comments:post.recent_comments%>
-                      
-                        <%=link_to user_post_path(id:post.id) ,{:class=>'list-group-item-action p-0 m-0'} do%>
-                            <button class="btn btn-success ">See Post</button>
                         <%end%>
 
                     </div>
                 <%end%>
         </div>
-        <%=render 'shared/center_btn',text:"Next Page"%>
+        <nav aria-label="posts">
+            <ul class="pagination">
+                <li class="page-item">
+                    <%=link_to 'Previous', user_posts_path(page:@page-1),class:'page-link' %>
+                </li>
+                <li class="page-item"><a class="page-link" href="#"><%=@page%></a></li>
+                
+                <li class="page-item">
+                <%=link_to 'Next', user_posts_path(page:@page+1),class:'page-link' %>
+                
+                </li>
+            </ul>
+        </nav>        
 </section>

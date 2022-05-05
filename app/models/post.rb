@@ -9,7 +9,4 @@ class Post < ApplicationRecord
   def recent_comments
     comments.order('created_at Desc').limit(5)
   end
-  def path
-    post_path id:id,user_id:author.id
-  end
 end
