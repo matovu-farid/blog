@@ -3,8 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @page = params.fetch(:page,0).to_i
-    @posts = @user.posts.offset(@page*POSTS_PER_PAGE).limit(POSTS_PER_PAGE)
+    @page = params.fetch(:page, 0).to_i
+    @posts = @user.posts.offset(@page * POSTS_PER_PAGE).limit(POSTS_PER_PAGE)
   end
 
   def show
