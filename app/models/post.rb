@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  validates :title,presence: true
+  validates :text,presence:true
   belongs_to :author, class_name: 'User'
   has_many :likes
   has_many :comments
