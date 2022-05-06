@@ -17,7 +17,8 @@ gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
 gem 'rails-controller-testing'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem "pg", "~> 1.1"
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -76,6 +77,7 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'

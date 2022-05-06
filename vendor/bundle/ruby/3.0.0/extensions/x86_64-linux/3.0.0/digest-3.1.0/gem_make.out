@@ -1,0 +1,18 @@
+current directory: /home/farid/Documents/projects/blog/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+/home/farid/.rvm/rubies/ruby-3.0.0/bin/ruby -I /home/farid/.rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0 -r ./siteconf20220506-32231-uq74sd.rb extconf.rb
+checking for u_int8_t... yes
+checking for sys/cdefs.h... yes
+creating Makefile
+
+current directory: /home/farid/Documents/projects/blog/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make "DESTDIR=" clean
+
+current directory: /home/farid/Documents/projects/blog/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make "DESTDIR="
+compiling sha2init.c
+compiling sha2.c
+linking shared-object digest/sha2.so
+
+current directory: /home/farid/Documents/projects/blog/vendor/bundle/ruby/3.0.0/gems/digest-3.1.0/ext/digest/sha2
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 sha2.so ./.gem.20220506-32231-o4gg7d/digest
