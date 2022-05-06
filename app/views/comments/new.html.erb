@@ -1,6 +1,4 @@
 <section>
-<%=@post.errors.map{|error| error.full_message}%>
- 
   <h2>Add your comment</h2>
   <%=form_with url:user_post_comments_path,model:@comment,local: true,data:{turbo:false},class:'container w-50' do |f|%>
         <%=render 'shared/comment_form',form:f%>
