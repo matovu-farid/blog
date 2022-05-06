@@ -12,11 +12,11 @@ class CommentsController < ApplicationController
     @comment.author_id = params[:user_id]
     @comment.post_id = params[:post_id]
     if @comment.save
-      flash[:success] = 'Your comment was created Successfully'
+      success
       redirect_to user_post_url(id: params[:post_id], user_id: params[:user_id])
     else
-
-      render :new
+      show_errors
+      render :new, status: 500
     end
   end
 
@@ -26,14 +26,32 @@ class CommentsController < ApplicationController
     @comment = find_comment
     @comment.text = new_comment.text
     if @comment.save
-      flash[:success] = 'Your comment was created Successfully'
+      success
       redirect_to user_post_url(id: params[:post_id], author_id: params[:user_id], user_id: params[:user_id])
     else
-      render :edit
+      show_errors
+      render :edit, status: 500
     end
   end
 
   private
+
+  def success
+    flash[:notice] = 'Your comment was created Successfully'
+  end
+
+  def failed
+    flash.now[:alert] = 'You comment was not saved'
+  end
+
+  def show_errors
+    failed
+    errors = @comment.errors.map do |error|
+      p error
+      error.full_message
+    end
+    flash.now[:error] = errors.join(' | ')
+  end
 
   def create_new_comment
     Comment.new(params_hash)
