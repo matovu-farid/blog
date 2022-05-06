@@ -44,6 +44,7 @@ class CommentsController < ApplicationController
   def show_errors
     failed
       errors = @comment.errors.map do |error| 
+        p error
         error.full_message 
       end
       flash.now[:error] = errors.join(" | ")
