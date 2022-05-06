@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       redirect_to user_post_url(id: @post.id)
     else
       show_errors
-      render :new,status: 500
+      render :new, status: 500
     end
   end
 
@@ -43,29 +43,28 @@ class PostsController < ApplicationController
       redirect_to user_post_url(@post)
     else
       show_errors
-      render :edit,status: 500
+      render :edit, status: 500
     end
   end
 
   private
+
   def success
     flash[:notice] = 'Your post was created Successfully'
   end
+
   def failed
     flash.now[:alert] = 'You post was not saved'
   end
 
   def show_errors
     failed
-      errors = @post.errors.map do |error| 
-        error.full_message 
-      end
-      flash.now[:error] = errors.join(" | ")
-      
+    errors = @post.errors.map(&:full_message)
+    flash.now[:error] = errors.join(' | ')
   end
 
   def create_new_post
-    post = Post.new(params.require(:post).permit(:title, :text))
+    Post.new(params.require(:post).permit(:title, :text))
   end
 
   def find_post
