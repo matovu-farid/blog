@@ -11,17 +11,24 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-light bg-light">
-  <div class="d-flex justify-content-end w-100">
-    <%=link_to "Signup",new_user_registration_path, class:"navbar-text p-2"%>
-    <%=link_to "Login",new_user_session_path, class:"navbar-text p-2"%>
-  </div>
-</nav>
-    <% flash.each do |type, msg| %>
-    <div class="alert alert-info">
-      <%= msg %>
-    </div>
-    <% end %>
-    <%= yield %>
+    <nav class="navbar navbar-light bg-light">
+      <div class="d-flex justify-content-end w-100">
+        <%unless user_signed_in?%>
+            <%=link_to "Signup",new_user_registration_path, class:"navbar-text p-2"%>
+            <%=link_to "Login",new_user_session_path, class:"navbar-text p-2"%>
+        <%else%>
+          <%=button_to "Logout",destroy_user_session_path, data:{turbo:false}, class:"btn navbar-text p-2",method: :delete%>
+        <%end%>
+      </div>
+    </nav>
+
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+    <div>
+      <%= yield %>
+    <div>
   </body>
 </html>
