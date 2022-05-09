@@ -60,8 +60,6 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
-
-
     <div class="field">
       <%= f.label :password_confirmation, class:'form-label' %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password",class: 'form-control' %>
