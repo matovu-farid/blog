@@ -13,7 +13,8 @@
   <body>
   <nav class="navbar navbar-light bg-light">
   <div class="d-flex justify-content-end w-100">
-    <span class="navbar-text p-2">Login</span>
+    <%=link_to "Signup",new_user_registration_path, class:"navbar-text p-2"%>
+    <%=link_to "Login",new_user_session_path, class:"navbar-text p-2"%>
   </div>
 </nav>
     <% flash.each do |type, msg| %>
