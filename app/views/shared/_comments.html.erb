@@ -3,10 +3,19 @@
         <li class="list-group-item justify-content-between d-flex">
     
             <%=comment.author.name%>: <%=comment.text%>
-            <% if can? :update, comment %>
-               <%= link_to "Edit ", 
-               edit_user_post_comment_path(post_id:comment.post_id,id:comment.id),class: 'btn btn-secondary' %>
-            <% end %>
-        </li> 
+            <div class="d-flex gap-3">
+                <% if can? :update, comment %>
+                   <%= link_to "Edit ",
+                   edit_user_post_comment_path(post_id:comment.post_id,id:comment.id),class: 'btn btn-secondary' %>
+                <% end %>
+                <% if can? :destroy, comment %>
+                   <%= button_to "Delete",
+                   "/users/#{current_user.id}/posts/#{comment.post.id}/comments/#{comment.id}",
+                   method: :delete,
+                   class: 'btn btn-secondary'
+                   %>
+                <% end %>
+            </div>
+        </li>
     <%end%>
 </div>
