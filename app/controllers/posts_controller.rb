@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource param_method: :post_params
   POSTS_PER_PAGE = 3
 
   def index
@@ -21,7 +22,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = create_new_post
     @post.author_id = params[:user_id]
     if @post.save
       success
@@ -33,17 +33,22 @@ class PostsController < ApplicationController
   end
 
   def update
-    new_post = create_new_post
-    @post = find_post
-    @post.title = new_post.title
-    @post.text = new_post.text
-
-    if @post.save
+    if @post.update(post_params)
       success
       redirect_to user_post_url(@post)
     else
       show_errors
       render :edit, status: 500
+    end
+  end
+
+  def destroy
+    if @post.destroy
+      flash[:notice] = 'Your post was deleted successfully'
+      redirect_to user_posts_path(user_id: params[:user_id])
+    else
+      flash.now[:notice] = 'Your post was not deleted'
+      render :show, status: 500
     end
   end
 
@@ -63,8 +68,8 @@ class PostsController < ApplicationController
     flash.now[:error] = errors.join(' | ')
   end
 
-  def create_new_post
-    Post.new(params.require(:post).permit(:title, :text))
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 
   def find_post

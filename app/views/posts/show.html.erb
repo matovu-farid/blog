@@ -2,8 +2,12 @@
     <%=render 'shared/post_show',post:@post%>
     <%=render 'shared/comments',comments:@comments%>
     <div class='d-flex justify-content-around p-3'>
-    <%=link_to 'Edit post', edit_user_post_path(@post),class:'btn btn-secondary align-self-start'%>
-    
+    <div class='d-flex flex-row gap-4'>
+        <%=link_to 'Edit post', edit_user_post_path(@post),class:'btn btn-secondary align-self-start'%>
+        <% if can? :destroy, @post %>
+          <%= button_to "Delete",  "/users/#{@post.author.id}/posts/#{@post.id}",class:'btn btn-danger align-self-start',method: :delete%>
+        <% end %>
+    </div>
     <%= link_to "Comment",  new_user_post_comment_path(post_id:@post.id),class:'btn btn-secondary align-self-start'%>
     </div>
 </section>

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource param_method: :comment_params
   def new
     @comment = Comment.new
   end
@@ -8,8 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = create_new_comment
-    @comment.author_id = params[:user_id]
+    @comment.author_id = current_user.id
     @comment.post_id = params[:post_id]
     if @comment.save
       success
@@ -21,17 +21,22 @@ class CommentsController < ApplicationController
   end
 
   def update
-    new_comment = create_new_comment
-
-    @comment = find_comment
-    @comment.text = new_comment.text
-    if @comment.save
+    if @comment.update(comment_params)
       success
       redirect_to user_post_url(id: params[:post_id], author_id: params[:user_id], user_id: params[:user_id])
     else
       show_errors
       render :edit, status: 500
     end
+  end
+
+  def destroy
+    flash[:notice] = if @comment.destroy
+                       'Comment deleted successfully'
+                     else
+                       'Comment was not deleted'
+                     end
+    redirect_to user_post_path(params[:user_id], params[:post_id])
   end
 
   private
@@ -46,22 +51,15 @@ class CommentsController < ApplicationController
 
   def show_errors
     failed
-    errors = @comment.errors.map do |error|
-      p error
-      error.full_message
-    end
+    errors = @comment.errors.map(&:full_message)
     flash.now[:error] = errors.join(' | ')
-  end
-
-  def create_new_comment
-    Comment.new(params_hash)
   end
 
   def find_comment
     Comment.find(params[:id])
   end
 
-  def params_hash
+  def comment_params
     params.require(:comment).permit(:text)
   end
 end
