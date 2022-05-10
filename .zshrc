@@ -1,1 +1,0 @@
-export PATH=/home/farid/.rvm/gems/ruby-3.0.0/bin:/home/farid/.rvm/gems/ruby-3.0.0@global/bin:/home/farid/.rvm/rubies/ruby-3.0.0/bin:/home/farid/.rvm/bin:/home/farid/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/homebrew/bin
