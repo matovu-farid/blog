@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource param_method: :post_params
   POSTS_PER_PAGE = 3
 
   def index
@@ -22,7 +22,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = create_new_post
     @post.author_id = params[:user_id]
     if @post.save
       success
@@ -34,12 +33,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    new_post = create_new_post
-    @post = find_post
-    @post.title = new_post.title
-    @post.text = new_post.text
 
-    if @post.save
+    if @post.update(post_params)
       success
       redirect_to user_post_url(@post)
     else
@@ -63,10 +58,11 @@ class PostsController < ApplicationController
     errors = @post.errors.map(&:full_message)
     flash.now[:error] = errors.join(' | ')
   end
-
-  def create_new_post
-    Post.new(params.require(:post).permit(:title, :text))
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
+
+
 
   def find_post
     Post.find(params[:id])

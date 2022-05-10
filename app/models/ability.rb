@@ -7,7 +7,7 @@ class Ability
       user ||= User.new
       can :read, Post
       return unless user.present?
-      can :destroy,Post, author:user
+      can [:destroy,:create,:update],Post, author:user
       return unless user.role == 'admin'
       can :destroy,Post
   end
