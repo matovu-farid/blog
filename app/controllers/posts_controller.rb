@@ -43,6 +43,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    if @post.destroy
+      flash[:notice] = 'Your post was deleted successfully'
+      redirect_to user_posts_path(user_id:params[:user_id])
+    else
+      flash.now[:notice] = 'Your post was not deleted'
+      render :show,status: 500
+    end   
+  end
+
   private
 
   def success
