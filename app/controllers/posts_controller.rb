@@ -33,7 +33,6 @@ class PostsController < ApplicationController
   end
 
   def update
-
     if @post.update(post_params)
       success
       redirect_to user_post_url(@post)
@@ -46,11 +45,11 @@ class PostsController < ApplicationController
   def destroy
     if @post.destroy
       flash[:notice] = 'Your post was deleted successfully'
-      redirect_to user_posts_path(user_id:params[:user_id])
+      redirect_to user_posts_path(user_id: params[:user_id])
     else
       flash.now[:notice] = 'Your post was not deleted'
-      render :show,status: 500
-    end   
+      render :show, status: 500
+    end
   end
 
   private
@@ -68,11 +67,10 @@ class PostsController < ApplicationController
     errors = @post.errors.map(&:full_message)
     flash.now[:error] = errors.join(' | ')
   end
+
   def post_params
     params.require(:post).permit(:title, :text)
   end
-
-
 
   def find_post
     Post.find(params[:id])

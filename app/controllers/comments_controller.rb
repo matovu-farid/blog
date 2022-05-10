@@ -31,11 +31,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
-      flash[:notice] = "Comment deleted successfully"
-    else
-      flash[:notice] = "Comment was not deleted"
-    end
+    flash[:notice] = if @comment.destroy
+                       'Comment deleted successfully'
+                     else
+                       'Comment was not deleted'
+                     end
     redirect_to user_post_path(params[:user_id], params[:post_id])
   end
 
@@ -51,9 +51,7 @@ class CommentsController < ApplicationController
 
   def show_errors
     failed
-    errors = @comment.errors.map do |error|
-      error.full_message
-    end
+    errors = @comment.errors.map(&:full_message)
     flash.now[:error] = errors.join(' | ')
   end
 
