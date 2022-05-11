@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :like do
-    author 
+    author
     post
   end
 end
