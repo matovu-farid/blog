@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :comment do
     author 
     post
-    text { "text" } 
+    text { "comment" } 
   end
 end
