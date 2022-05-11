@@ -1,6 +1,6 @@
 <ul class="list-group">
 	<%@users.each do |user|%>
-		<div>
+		<div class="user">
 			<%=link_to user_path(id:user.id) ,class:'list-group-item list-group-item-action p-0 m-0' do%>
 				<li class="my-5">
 					<%=render 'shared/user', user: user%>
