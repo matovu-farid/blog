@@ -5,8 +5,8 @@ RSpec.describe "UserIndices", type: :system do
     driven_by(:rack_test)
   end
   before(:each) do 
-    user = create(:user,name: "current_user")
-    sign_in user
+    @user = create(:user,name: "current_user")
+    sign_in @user
   end
   it "should be able to view other users" do
     create(:user,name: "other")
@@ -26,11 +26,10 @@ RSpec.describe "UserIndices", type: :system do
     end
   end
   it "should be able to redirect to a users show page" do
-    create(:user,name: "clicked")
-    visit '/'
-    expect(page).to_not have_content("Bio")
+  
+   visit root_url
      
-    page.first('a',text:'clicked').click
-    expect(page).to have_content('Bio')
+    page.first("a[href*='#{user_path(@user)}']").click
+    expect(current_url).to eq(user_url(@user))
   end
 end
