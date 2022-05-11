@@ -7,6 +7,7 @@
         <%=link_to 'New post',new_user_post_path(user_id:@user.id),class:'btn btn-secondary'%>
         <div>
                 <%@posts.each do |post|%>
+                <div class="post">
                     <div class="my-5">    
                             
                         <%=link_to user_post_path(id:post.id) ,{:class=>'list-group-item list-group-item-action p-0 m-0'} do%>
@@ -15,6 +16,7 @@
                         <%end%>
 
                     </div>
+                </div>
                 <%end%>
         </div>
         <nav aria-label="posts">
