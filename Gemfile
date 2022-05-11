@@ -66,6 +66,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
+  gem "factory_bot_rails"
 
   gem 'letter_opener', group: :development
 
@@ -82,8 +83,14 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem "factory_bot_rails"
 end
 
 gem 'devise', '~> 4.8'
 
 gem 'cancancan', '~> 3.3'
+
+
+
+
+gem "pry-rails", "~> 0.3.9"
